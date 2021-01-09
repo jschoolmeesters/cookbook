@@ -12,7 +12,7 @@ permalink: /
         {% for recipe in category.last %}
           <li>
             <!-- recipe.title | strip_html | newline_to_br | split: '<br />' -->
-            <h3><a href="{{ recipe.url }}">{{ recipe.title }}</a> {{ recipe.tags | sort | join: ", "}}</h3>
+            <h3><a href="{{ page.url | relative_url }}">{{ recipe.title }}</a> {{ recipe.tags | sort | join: ", "}}</h3>
           </li>
         {% endfor %}
       {% endfor %}
