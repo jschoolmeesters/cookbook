@@ -1,0 +1,355 @@
+
+
+@mixin e($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+
+@mixin m($modifier) {
+    &--#{$modifier} {
+        @content;
+    }
+}
+
+@mixin respond-to($breakpoint) {
+    @media #{$breakpoint} {
+      @content;
+    }
+}
+
+
+
+$breakpoint-small: '(max-width: 600px)';
+$breakpoint-large: '(min-width: 1200px)';
+
+//$color-text: #473144;
+//$color-text-light: #473144;
+//$color-bg: #EDD4B2;
+//$color-accent-red: #CC444B;
+//$color-accent-green: #157A6E;
+
+$color-text: #000;
+$color-text-light: #473144;
+$color-bg:  	#fff;
+$color-accent-red:  	#ae2b73;
+$color-accent-green: #00b74f;
+
+.recipes {
+  width: calc(100% - 40px);
+  max-width: 600px;
+  position: relative;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(#fff,0.2);
+  min-height: calc(100% - 40px);
+
+  @include e('title') {
+     font-size: 2em;
+     font-weight: 600;
+  }
+
+  @include e('category') {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 15px 0px 0px 0px;
+  }
+
+  h3 {
+    margin: 0;
+    font-weight: 300;
+    color: $color-accent-green;
+    font-size: 1.5em;
+  }
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ol {
+  list-style: decimal;
+  padding: 0px 0px 0px 20px;
+}
+
+html, body {
+   width: 100%;
+   height: 100%;
+   padding: 0;
+   margin: 0;
+   //font-family: 'Roboto Slab', serif;
+   //font-family: 'Texturina', serif;
+   font-family: 'Poppins', sans-serif;
+   background: $color-bg;
+   color: $color-text;
+}
+
+a {
+   color: $color-text;
+   text-decoration: underline;
+   transition: color 0.1s ease;
+   font-weigth: 400;
+
+   &:hover {
+      color: $color-accent-green;
+   }
+}
+
+h1 {
+   font-size: 1.5em;
+   font-weight: 400;
+   margin: 15px 0px 0px 0px;
+}
+
+.nav {
+   z-index: 999;
+   position: relative;
+   top:0;
+   left:0;
+   width: 100%;
+   background: #fff;
+
+   @include e('top-bar') {
+      width: 100%;
+      background: $color-accent-green;
+      position: relative;
+      top: 0;
+      left: 0;
+      padding: 0.3em 0 0.3em 0;
+
+      p {
+         color: #fff;
+         text-align: center;
+         margin: 0;
+      }
+   }
+
+   @include e('brand-name') {
+      color: $color-accent-green;
+      display: inline-block;
+      line-height: 45px;
+      height: 100%;
+      margin: 15px 25px;
+      font-size: 1.5rem;
+   }
+}
+
+.menu {
+   z-index: 998;
+   position: fixed;
+   width: 100%;
+   height: 100%;
+   background-color: $color-accent-green;
+   top: -100%;
+   left: 0;
+   -webkit-transition: .5s ease-in-out;
+   -moz-transition: .5s ease-in-out;
+   -o-transition: .5s ease-in-out;
+   transition: .5s ease-in-out;
+
+   @include m('open') {
+      top: 0;
+   }
+
+   ul {
+      display: block;
+      position: absolute;
+      list-style: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      padding: 0;
+   }
+
+   a {
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: calc(1.5rem + 6vw);
+      cursor: pointer;
+      transition: color 0.2s ease;
+      text-decoration: none;
+
+      &:hover {
+         color: rgba(#000, 0.4);
+      }
+
+      @include respond-to ($breakpoint-large) {
+         font-size: 6.5rem;
+      }
+   }
+}
+
+.content {
+   position: relative;
+   display: inline-block;
+   width: 100%;
+   height: 100%;
+   background: transparent;
+   float: left;
+
+   @include respond-to($breakpoint-large) {
+      width: 100%;
+      height: initial;
+   }
+}
+
+.recipe {
+   width: calc(100% - 40px);
+   max-width: 800px;
+   position: relative;
+   padding: 20px;
+   margin-left: auto;
+   margin-right: auto;
+   //background: rgba(#fff,0.2);
+   min-height: calc(100% - 40px);
+
+   @include respond-to($breakpoint-small) {
+      padding-top: 20px;
+   }
+
+   @include e('title') {
+      font-size: 2em;
+      font-weight: 600;
+      display: inline;
+   }
+
+   @include e('date') {
+     display: inline;
+     float: right;
+     font-weight: 300;
+   }
+
+   @include e('tags') {
+     margin: 0;
+     color: $color-accent-green;
+   }
+
+   h2 {
+      padding: 0px 0px 5px 0px;
+      margin: 5px 0px 0px 0px;
+      font-weight: bold;
+      font-size: 1em;
+      border-bottom: 1px solid $color-text-light !important;
+   }
+
+   ul li {
+      padding: 7px 0px 7px 0px;
+
+      &:not(:last-child) {
+         border-bottom: 1px dashed $color-text-light;
+      }
+   }
+
+   @include e('underline') {
+      color: $color-accent-green;
+      text-decoration: underline;
+   }
+
+   ol {
+     margin: 0;
+   }
+
+   ol li {
+      padding: 5px 0px 5px 0px;
+      border-bottom: none !important;
+   }
+}
+
+#nav-icon3{
+  width: 60px;
+  height: 40px;
+  position: relative;
+   display: inline-block;
+   float:right;
+   right: 0;
+  margin: 18px 25px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+#nav-icon3 span{
+  display: block;
+  position: absolute;
+  height: 7px;
+  width: 100%;
+  background: $color-accent-green;
+  border-radius: 0;
+  opacity: 1;
+  right: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+#nav-icon3 span:nth-child(1) {
+  top: 0px;
+}
+
+#nav-icon3 span:nth-child(2),#nav-icon3 span:nth-child(3) {
+  top: 16px;
+}
+
+#nav-icon3 span:nth-child(4) {
+  top: 32px;
+}
+
+#nav-icon3.open span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  right: 50%;
+}
+
+#nav-icon3.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#nav-icon3.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#nav-icon3.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+
+@media #{$breakpoint-small}{
+   #nav-icon3.hover span:nth-child(1) {
+      width: 100%;
+   }
+
+   #nav-icon3.hover span:nth-child(2) {
+      width: 0%;
+   }
+
+   #nav-icon3.hover span:nth-child(3) {
+      width: 75%;
+   }
+
+   #nav-icon3.hover span:nth-child(4) {
+      width: 60%;
+   }
+}

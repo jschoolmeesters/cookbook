@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<div class="content">
+  <div class="recipe">
+    <h1 class="recipe__title">{{ page.title }}</h1>
+    <h3 class="recipe__date">{{ page.date | date_to_string }}</h3>
+    <h3 class="recipe__tags">{{ page.tags | sort | join: ", "}}<h3>
+    {{ content }}
+  </div>
+</div>

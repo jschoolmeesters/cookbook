@@ -1,0 +1,18 @@
+I"<h1 id="ingredients">Ingredients</h1>
+<ul>
+  <li>1 banana</li>
+  <li>2 apple</li>
+</ul>
+
+<h2 id="sauce-mix">Sauce mix</h2>
+<ul>
+  <li>1 tb honey</li>
+  <li>1 cup soy milk</li>
+</ul>
+
+<h1 id="method">Method</h1>
+<ol>
+  <li>mix all apples</li>
+  <li>add honey</li>
+</ol>
+:ET

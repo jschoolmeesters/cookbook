@@ -1,0 +1,21 @@
+<div class="menu">
+   <ul>
+     {% for item in site.data.navigation %}
+       <li>
+         <a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>
+           {{ item.name }}
+         </a>
+       </li>
+     {% endfor %}
+   </ul>
+</div>
+
+<div class="nav">
+   <h4 class="nav__brand-name">recipes.md</h4>
+   <div id="nav-icon3">
+     <span></span>
+     <span></span>
+     <span></span>
+     <span></span>
+   </div>
+</div>

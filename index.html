@@ -1,0 +1,21 @@
+---
+layout: default
+title: Recipes
+permalink: /
+---
+<div class="content">
+  <div class="recipes">
+    <h1 class="recipes__title">Recipes</h1>
+    <ul>
+      {% for category in site.categories %}
+        <h2 class="recipes__category">{{ category.first | capitalize }}</h2>
+        {% for recipe in category.last %}
+          <li>
+            <!-- recipe.title | strip_html | newline_to_br | split: '<br />' -->
+            <h3><a href="{{ recipe.url }}">{{ recipe.title }}</a> {{ recipe.tags | sort | join: ", "}}</h3>
+          </li>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
